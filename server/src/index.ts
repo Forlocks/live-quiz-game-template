@@ -15,7 +15,7 @@ wss.on('connection', (ws: WebSocketWithIds)  => {
   console.log('Client connected');
 
   ws.on('message', message => {
-    const { type, data, id } = JSON.parse(message.toString());
+    const { type, data } = JSON.parse(message.toString());
     
     switch (type) {
       case 'reg':

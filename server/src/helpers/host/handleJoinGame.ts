@@ -4,7 +4,6 @@ import { broadcast } from "../broadcast";
 
 export function handleJoinGame(ws: WebSocketWithIds, data: JoinGameData) {
   const { code } = data;
-
   const game = [...games.values()].find((g: Game) => g.code === code);
   const user = users.get(ws.userId);
 
@@ -48,6 +47,7 @@ export function handleJoinGame(ws: WebSocketWithIds, data: JoinGameData) {
       name: p.name,
       index: p.index,
       score: p.score,
+      ws,
     })),
     id: 0,
   });
