@@ -1,13 +1,16 @@
-import WebSocket from "ws";
-import { RegData, User } from "../../types";
+import { RegData, User, WebSocketWithIds } from "../../types";
 import { users } from "../../store";
 
-export function handleReg(ws: WebSocket, data: RegData) {
+export function handleReg(ws: WebSocketWithIds, data: RegData) {
   const { name, password } = data;
   const existingUser = [...users.values()].find(u => u.name === name);
 
   if (existingUser) {
     const isCorrectPassword = existingUser.password === password;
+
+    if (isCorrectPassword) {
+      ws.userId = existingUser.index;
+    }
 
     ws.send(JSON.stringify({
       type: 'reg',
@@ -32,6 +35,8 @@ export function handleReg(ws: WebSocket, data: RegData) {
   };
 
   users.set(userId, user);
+
+  ws.userId = userId;
 
   ws.send(JSON.stringify({
     type: 'reg',

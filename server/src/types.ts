@@ -37,6 +37,11 @@ export interface User {
   ws?: WebSocket;
 }
 
+export interface WebSocketWithIds extends WebSocket {
+  userId?: string;
+  gameId?: string;
+}
+
 export interface WSMessage {
   type: string;
   data: any;
