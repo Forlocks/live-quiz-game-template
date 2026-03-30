@@ -21,9 +21,13 @@
     "game",
     "real-time"
   ],
-  "author": "",
+  "type": "module",
+  "author": "Forlocks",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^9.1.2"
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^9.1.2",
+    "eslint": "^10.1.0",
+    "globals": "^17.4.0"
   }
 }

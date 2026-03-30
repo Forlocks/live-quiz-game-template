@@ -1,10 +1,15 @@
 import type { WebSocket } from 'ws';
 
+export interface WebSocketWithIds extends WebSocket {
+  userId?: string;
+  gameId?: string;
+}
+
 export interface Player {
   name: string;
   index: string;
   score: number;
-  ws?: WebSocket;
+  ws?: WebSocketWithIds;
   hasAnswered?: boolean;
   answerTime?: number;
   answeredCorrectly?: boolean;
@@ -34,7 +39,7 @@ export interface User {
   name: string;
   password: string;
   index: string;
-  ws?: WebSocket;
+  ws?: WebSocketWithIds;
 }
 
 export interface WSMessage {
